@@ -27,17 +27,17 @@
 | name                | string     | null: false                    |
 | price               | int        | null: false                    |
 | description         | text       | null: false                    |
-| shipping_charges_id | int        | null: false, foreign_key: true |
+| shipping_charge_id  | int        | null: false, foreign_key: true |
 | category_id         | int        | null: false, foreign_key: true |
 | state_id            | int        | null: false, foreign_key: true |
-| days_to_ship_id     | int        | null: false, foreign_key: true |
+| day_to_ship_id      | int        | null: false, foreign_key: true |
 | prefecture_id       | int        | null: false, foreign_key: true |
 | user                | references | null: false, foreign_key: true |
 
 -belongs_to :user
 -has_one :order
 
-## addressテーブル
+## addressesテーブル
 
 | Column        | Type       | Options  
 | ------------- | ---------- | ------------------------------ |
@@ -54,7 +54,7 @@
 
 -belongs_to :order
 
-## orderテーブル
+## ordersテーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
