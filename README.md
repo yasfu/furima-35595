@@ -15,13 +15,10 @@
 | first_name_kana           | string | null: false               |
 | birthday                  | date   | null: false               |
 
-
-
 ### Association
 
 -has_many :products
--has_many :order
--has_one :address
+-has_many :orders
 
 ## productsテーブル
 
@@ -34,46 +31,38 @@
 | category_id         | int        | null: false, foreign_key: true |
 | state_id            | int        | null: false, foreign_key: true |
 | days_to_ship_id     | int        | null: false, foreign_key: true |
-| shipping_charges_id | int        | null: false, foreign_key: true |
+| prefecture_id       | int        | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
 
--belongs_to :users
+-belongs_to :user
 -has_one :order
--belongs_to :address
 
 ## addressテーブル
 
 | Column        | Type       | Options  
 | ------------- | ---------- | ------------------------------ |
 | zip_code      | string     | null: false                    |
+| prefecture_id | int        | null: false, foreign_key: true |
 | city          | string     | null: false                    |
 | district      | string     | null: false                    |
 | address       | string     | null: false                    |
 | building      | string     |                                |
 | phone_number  | string     | null: false                    |
-| prefecture_id | int        | null: false                    |
-| user          | references | null: false, foreign_key: true |
-| product       | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
--has_many :products
--belongs_to :user
 -belongs_to :order
 
 ## orderテーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| shipping_charges_id | int        | null: false                    |
-| category_id         | int        | null: false                    |
-| sate_id             | int        | null: false                    |
-| days_to_ship_id     | int        | null: false                    |
 | user                | references | null: false, foreign_key: true |
 | product             | references | null: false, foreign_key: true |
 
-
 ### Association
 
--belongs_to :products
--has_many :user
+-belongs_to :product
+-belongs_to :user
 -has_one :address
