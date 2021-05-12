@@ -27,11 +27,11 @@
 | name                | string     | null: false                    |
 | price               | int        | null: false                    |
 | description         | text       | null: false                    |
-| shipping_charge_id  | int        | null: false, foreign_key: true |
-| category_id         | int        | null: false, foreign_key: true |
-| state_id            | int        | null: false, foreign_key: true |
-| day_to_ship_id      | int        | null: false, foreign_key: true |
-| prefecture_id       | int        | null: false, foreign_key: true |
+| shipping_charge_id  | int        | null: false                    |
+| category_id         | int        | null: false                    |
+| state_id            | int        | null: false                    |
+| day_to_ship_id      | int        | null: false                    |
+| prefecture_id       | int        | null: false                    |
 | user                | references | null: false, foreign_key: true |
 
 -belongs_to :user
@@ -42,7 +42,7 @@
 | Column        | Type       | Options  
 | ------------- | ---------- | ------------------------------ |
 | zip_code      | string     | null: false                    |
-| prefecture_id | int        | null: false, foreign_key: true |
+| prefecture_id | int        | null: false                    |
 | city          | string     | null: false                    |
 | district      | string     | null: false                    |
 | address       | string     | null: false                    |
