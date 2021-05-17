@@ -5,15 +5,22 @@ class Product < ApplicationRecord
 
   with_options presence: true do
     validates :image
+    validates :name
     validates :description
+    validates :category_id
+    validates :state_id
+    validates :shipping_charge_id
+    validates :prefecture_id
+    validates :day_to_ship_id
+    validates :price
   end
-  validates :name, presence: true, max_length: 40
-  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 message: 'is out of setting range'}, format: { with: /\A[0-9]+\z/, message: 'is invalid. Input half-width characters' } 
-  with_options presence: true, numericality: {other_than: 0, message: "can't be blank"} do
-    validates :category
-    validates :state
-    validates :Shipping_Charge
-    validates :prefecture
-    validates :day_to_ship
+  validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range"}
+  validates :price, format: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters" }
+  with_options numericality: {other_than: 1, message: "can't be blank"} do
+    validates :category_id
+    validates :state_id
+    validates :shipping_charge_id
+    validates :prefecture_id
+    validates :day_to_ship_id
   end
 end
