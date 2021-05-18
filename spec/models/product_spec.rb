@@ -29,27 +29,27 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Description can't be blank")
       end
       it 'カテゴリー(-−-)が存在する場合出品できないこと' do
-        @product.category_id = '1'
+        @product.category_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Category can't be blank")
       end
       it '商品の状態(-−-)が存在する場合出品できないこと' do
-        @product.state_id = '1'
+        @product.state_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("State can't be blank")
       end
       it '発送料の負担(-−-)が存在する場合出品できないこと' do
-        @product.shipping_charge_id = '1'
+        @product.shipping_charge_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Shipping charge can't be blank")
       end
       it '発送元の地域(-−-)が存在する場合出品できないこと' do
-        @product.prefecture_id = '1'
+        @product.prefecture_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Prefecture can't be blank")
       end
       it '発送までの日数(-−-)が存在する場合出品できないこと' do
-        @product.day_to_ship_id = '1'
+        @product.day_to_ship_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Day to ship can't be blank")
       end
@@ -89,12 +89,12 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Price is invalid. Input half-width characters")
       end
       it '価格が300￥以下の場合出品できないこと' do
-        @product.price = '299'
+        @product.price = 299
         @product.valid?
         expect(@product.errors.full_messages).to include("Price is out of setting range")
       end
       it '価格が9999999以上の場合出品できないこと' do
-        @product.price = '999999999'
+        @product.price = 999999999
         @product.valid?
         expect(@product.errors.full_messages).to include("Price is out of setting range")
       end
