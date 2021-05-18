@@ -98,6 +98,11 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include("Price is out of setting range")
       end
+      it '価格が半角英数の場合出品できないこと' do
+       @product.price = '999asd'
+       @product.valid?
+       expect(@product.errors.full_messages).to include("Price is invalid. Input half-width characters")
+      end
     end
   end
 end
