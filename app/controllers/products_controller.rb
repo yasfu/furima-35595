@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_product, only: [:edit, :show, :update]
+  before_action :path_limit, only: [:edit, :update]
 
   def index
     @products = Product.all.order('created_at DESC')
@@ -23,12 +24,10 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path unless current_user.id == @product.user_id
   end
 
   def update
     if @product.update(product_params)
-      redirect_to root_path unless current_user.id == @product.user_id
       redirect_to product_path
     else
       render :edit
@@ -45,4 +44,9 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   end
+
+  def path_limit
+    redirect_to root_path unless current_user.id == @product.user_id
+  end
+  
 end
