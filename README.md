@@ -44,7 +44,6 @@
 | zip_code      | string     | null: false                    |
 | prefecture_id | int        | null: false                    |
 | city          | string     | null: false                    |
-| district      | string     | null: false                    |
 | address       | string     | null: false                    |
 | building      | string     |                                |
 | phone_number  | string     | null: false                    |
