@@ -9,7 +9,7 @@ class OrderAddress
     validates :phone_number
   end
   validates :prefecture, numericality: { other_than: 1, message: "can't be blank" }
-  validates :phone_number, format: { with: /\A\d{10}\z/, message: "is too short" }
+  validates :phone_number, format: { with: /\A\d{11}\z/, message: "is too short" }
   validates :phone_number, format: { with: /\A[0-9]+\z/, message: "is invalid. Input only number" }
   
   def save
