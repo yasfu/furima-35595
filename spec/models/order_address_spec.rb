@@ -33,37 +33,37 @@ RSpec.describe OrderAddress, type: :model do
       it 'zip_codeに-がないときは購入できないこと' do
         @order_address.zip_code = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Zip code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order_address.errors.full_messages).to include('Zip code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'zip_codeに漢字が存在するときは購入できないこと' do
         @order_address.zip_code = '一二三-四五六七'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Zip code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order_address.errors.full_messages).to include('Zip code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'zip_codeにひらがなが存在するときは購入できないこと' do
         @order_address.zip_code = 'あいう-えおかき'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Zip code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order_address.errors.full_messages).to include('Zip code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'zip_codeにカタカナが存在するときは購入できないこと' do
         @order_address.zip_code = 'アイウ-エオカキ'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Zip code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order_address.errors.full_messages).to include('Zip code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'zip_codeに半角英語が存在するときは購入できないこと' do
         @order_address.zip_code = 'abc-defg'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Zip code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order_address.errors.full_messages).to include('Zip code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'zip_codeに全角英語が存在するときは購入できないこと' do
         @order_address.zip_code = 'ABC-DEFG'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Zip code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order_address.errors.full_messages).to include('Zip code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'zip_codeに全角数字が存在するときは購入できないこと' do
         @order_address.zip_code = '１２３-４５６７'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Zip code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order_address.errors.full_messages).to include('Zip code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'prefectureが存在しなければ購入できないこと' do
         @order_address.prefecture = 1
@@ -71,7 +71,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
       end
       it 'cityが空では購入できないこと' do
-        @order_address.city =' '
+        @order_address.city = ' '
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("City can't be blank")
       end
@@ -88,38 +88,38 @@ RSpec.describe OrderAddress, type: :model do
       it 'phone_numberが11より少なければ購入できないこと' do
         @order_address.phone_number = '1234567890'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is too short")
+        expect(@order_address.errors.full_messages).to include('Phone number is too short')
       end
       it 'phone_numberに全角数字が存在すれば購入できないこと' do
         @order_address.phone_number = '１２３４５６７８９０１'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it 'phone_numberに全角英語が存在すれば購入できないこと' do
         @order_address.phone_number = 'ABCDEFGHIJK'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it 'phone_numberにひらがなが存在すれば購入できないこと' do
         @order_address.phone_number = 'あいうえおかきくけこさ'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it 'phone_numberにカタカナが存在すれば購入できないこと' do
         @order_address.phone_number = 'アイウエオカキクケコサ'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it 'phone_numberに漢字が存在すれば購入できないこと' do
         @order_address.phone_number = '一二三四五六七八九十一'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
       it 'phone_numberに半角英語が存在すれば購入できないこと' do
         @order_address.phone_number = 'abcdefghijk'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order_address.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
-    end 
+    end
   end
 end

@@ -53,5 +53,4 @@ class ProductsController < ApplicationController
   def path_limit
     redirect_to root_path unless current_user.id == @product.user_id
   end
-  
 end
