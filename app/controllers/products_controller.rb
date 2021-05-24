@@ -57,6 +57,6 @@ class ProductsController < ApplicationController
 
   def move_to_index
     @product = Product.find(params[:id])
-    redirect_to root_path if current_user.id == @product.user_id && @product.order.present?
+    redirect_to root_path if current_user.id! == @product.user_id || @product.order.present?
   end
 end

@@ -125,6 +125,16 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
+      it 'user_idが空では購入できないこと' do
+        @order_address.user_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("User can't be blank")
+      end
+      it  'product_idが空では購入できないこと' do
+        @order_address.product_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Product can't be blank")
+      end
     end
   end
 end
