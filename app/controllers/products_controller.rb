@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_product, only: [:edit, :show, :update, :destroy]
+  before_action :set_product, only: [:edit, :show, :update, :destroy, :move_to_index]
   before_action :path_limit, only: [:edit, :update, :destroy]
-  before_action :move_to_index, only: [:edit]
+  before_action :move_to_index, only: [:edit, :update]
 
   def index
     @products = Product.all.order('created_at DESC')
